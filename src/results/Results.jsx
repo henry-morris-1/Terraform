@@ -94,7 +94,7 @@ function Compatability({ os, browser, setExtension }) {
 function generateUserscript(filters) {
     let script = "// ==UserScript==\n// @name        Twitter\n// @description Removes excess twitter features\n// @match       *://*.twitter.com/*\n// @match       *://*.x.com/*\n// ==/UserScript==\n\nfunction addStyleString(str) {\n    let node = document.createElement('style');\n    node.innerHTML = str;\n    document.body.appendChild(node);\n}\n\n";
     filters.forEach(arr => {
-        arr.forEach(selector => {
+        arr && arr.forEach(selector => {
             script += `addStyleString('${selector}  { display: none !important }');\n`;
         });
     });
@@ -109,7 +109,7 @@ function generateUserscript(filters) {
 function generateUblock(filters) {
     let script = "! Twitter\n";
     filters.forEach(arr => {
-        arr.forEach(selector => {
+        arr && arr.forEach(selector => {
             script += `twitter.com,x.com##${selector}\n`;
         });
     });
