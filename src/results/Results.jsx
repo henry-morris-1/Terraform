@@ -30,7 +30,7 @@ export default function Results({ os, browser, filters }) {
         <>
             <Compatability os={os} browser={browser} setExtension={setExtension} />
 
-            {script && <>
+            {extension && script && <>
                 <div className="mt-3 flex justify-end">
                     <button onClick={() => {copy(script)}} className="px-3 py-2 mb-1 bg-blue-500 text-white rounded-lg">Copy script to clipboard</button>
                 </div>
