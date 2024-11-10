@@ -28,7 +28,7 @@ export default function Layout() {
     return(
         <>
             <header className="w-full py-3 border-b border-black flex align-center justify-center">
-                <h1 className="text-5xl font-black">TERAFORM</h1>
+                <h1 className="text-5xl font-black">TERRAFORM</h1>
             </header>
 
             <main className="flex justify-center">
@@ -36,7 +36,7 @@ export default function Layout() {
                     <Carousel currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
                         <Setup value={os} setValue={setOs} title="Select your operating system" options={osOptions} />
                         <Setup value={browser} setValue={setBrowser} title="Select your browser" options={browserOptions} />
-                        <Setup value={platform} setValue={setPlatform} title="Select a platform to teraform" options={platformOptions} />
+                        <Setup value={platform} setValue={setPlatform} title="Select a platform to terraform" options={platformOptions} />
 
                         <Twitter filters={filters} setFilters={setFilters} />
 
