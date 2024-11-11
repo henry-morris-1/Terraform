@@ -17,7 +17,7 @@ export default function Twitter({ filters, setFilters }) {
                 <Feature title="Search bar" description="Removes the search feature" filters={filters} setFilters={setFilters} id={2} selectors={['[aria-label="Search"]']} />
                 <Feature title="Explore" description="Remove access to the explore page" filters={filters} setFilters={setFilters} id={3} selectors={['[aria-label="Search and explore"]']} />
                 <Feature title="What's happening" description="Removes the trending section in the left sidebar (desktop)" filters={filters} setFilters={setFilters} id={4} selectors={['[aria-label="Timeline: Trending now"]']} />
-                <Feature title="Who to follow" description="Removes profile recommendations in the left sidebar (desktop)" filters={filters} setFilters={setFilters} id={5} selectors={['aria-label="Who to follow"']} />
+                <Feature title="Who to follow" description="Removes profile recommendations in the left sidebar (desktop)" filters={filters} setFilters={setFilters} id={5} selectors={['[aria-label="Who to follow"]']} />
                 <Feature title="Videos" description="Removes video carousels from the trending page" filters={filters} setFilters={setFilters} id={6} selectors={['[aria-label="Timeline: Carousel"]', 'div > div > div > div > h2 > div > span:has-text(Videos for you):upward(div):upward(h2):upward(div):upward(div):upward(div):upward(div)']} />
                 <Feature title="Events" description="Removes events from the trending page" filters={filters} setFilters={setFilters} id={7} selectors={['[href^="/i/events/"]']} />
                 <Feature title="Sports, news, and entertainment" description="Removes all explore sections besides &quot;for you&quot; and &quot;trending&quot;" filters={filters} setFilters={setFilters} id={8} selectors={['[aria-label="Timeline: Explore"] > div > div > div > div > :not([data-testid="trend"])']} />
@@ -31,7 +31,7 @@ export default function Twitter({ filters, setFilters }) {
                 <Feature title="Jobs" description="Hides the jobs page" filters={filters} setFilters={setFilters} id={12} selectors={['[href="/jobs"]']} />
                 <Feature title="Messages" description="Hides the messages page" filters={filters} setFilters={setFilters} id={13} selectors={['[aria-label="Direct Messages"]']} />
                 <Feature title="Notifications" description="Hides the notifications page" filters={filters} setFilters={setFilters} id={14} selectors={['[aria-label="Notifications"]']} />
-                <Feature title="Spaces" description="Removes spaces" filters={filters} setFilters={setFilters} id={15} selectors={['href="/i/spaces/start"']} />
+                <Feature title="Spaces" description="Removes spaces" filters={filters} setFilters={setFilters} id={15} selectors={['[href="/i/spaces/start"]']} />
             </section>
 
             <section className="mt-3 border-b border-black">
@@ -42,7 +42,7 @@ export default function Twitter({ filters, setFilters }) {
 
             <section className="mt-3 border-b border-black">
                 <h3 className="text-2xl leading-6 font-semibold text-center">User Abilities</h3>
-                <Feature title="Posting" description="Removes the ability to create new posts" filters={filters} setFilters={setFilters} id={18} selectors={['href="/compose/post"]', '[data-testid="tweetButtonInline"]', '[data-testid="tweetTextarea_0_label"]', '[data-testid="toolBar"]:upward(div)', '[aria-label="Everyone can reply"]', '[data-testid="UserAvatar-Container-F345J6fklgj4"]:upward(div)', '[data-testid="postButton"]', '[data-testid="SideNav_NewPost_Button"]']} />
+                <Feature title="Posting" description="Removes the ability to create new posts" filters={filters} setFilters={setFilters} id={18} selectors={['[href="/compose/post"]', '[data-testid="tweetButtonInline"]', '[data-testid="tweetTextarea_0_label"]', '[data-testid="toolBar"]:upward(div)', '[aria-label="Everyone can reply"]', '[data-testid="UserAvatar-Container-F345J6fklgj4"]:upward(div)', '[data-testid="postButton"]', '[data-testid="SideNav_NewPost_Button"]']} />
                 <Feature title="Following" description="Removes the ability to follow users" filters={filters} setFilters={setFilters} id={19} selectors={['[aria-label^="Follow "]']} />
             </section>
 
