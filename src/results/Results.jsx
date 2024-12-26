@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
  * script to copy and paste into it.
  * @param {string} os Operating system selected
  * @param {string} browser Browser selected
+ * @param {string} platform Platform selected
  * @param {array} filters Array of CSS selectors to filter out
  */
-export default function Results({ os, browser, filters }) {
+export default function Results({ os, browser, platform, filters }) {
     const [extension, setExtension] = useState(null); // Figure out which extension is being used based on os/browser
     const [script, setScript] = useState(""); // Keep the final script in a string
 
@@ -16,11 +17,11 @@ export default function Results({ os, browser, filters }) {
     useEffect(() => {
         if (extension) {
             if (extension === "userscripts") {
-                const newScript = generateUserscript(filters);
+                const newScript = generateUserscript(platform, filters);
                 setScript(newScript);
 
             } else if (extension === "ublock") {
-                const newScript = generateUblock(filters);
+                const newScript = generateUblock(platform, filters);
                 setScript(newScript);
             }
         }
@@ -88,11 +89,21 @@ function Compatability({ os, browser, setExtension }) {
 
 /**
  * Generates a Userscript script for the selected filters.
+ * @param {string} platform Platform being terraformed
  * @param {array} filters Array of CSS selectors to filter out
  * @returns Script for Userscript in the form of a string
  */
-function generateUserscript(filters) {
-    let script = "// ==UserScript==\n// @name        Twitter\n// @description Removes excess twitter features\n// @match       *://*.twitter.com/*\n// @match       *://*.x.com/*\n// ==/UserScript==\n\nfunction addStyleString(str) {\n    let node = document.createElement('style');\n    node.innerHTML = str;\n    document.body.appendChild(node);\n}\n\n";
+function generateUserscript(platform, filters) {
+    let script = "";
+    switch(platform) {
+        case "twitter":
+            script += "// ==UserScript==\n// @name        Twitter\n// @description Removes excess twitter features\n// @match       *://*.twitter.com/*\n// @match       *://*.x.com/*\n// ==/UserScript==\n\nfunction addStyleString(str) {\n    let node = document.createElement('style');\n    node.innerHTML = str;\n    document.body.appendChild(node);\n}\n\n";
+            break;
+        case "reddit":
+            script += "// ==UserScript==\n// @name        Reddit\n// @description Removes excess reddit features\n// ==/UserScript==\n\nfunction addStyleString(str) {\n    let node = document.createElement('style');\n    node.innerHTML = str;\n    document.body.appendChild(node);\n}\n\n";
+            break;
+    }
+
     filters.forEach(arr => {
         arr && arr.forEach(selector => {
             script += `addStyleString('${selector}  { display: none !important }');\n`;
@@ -103,14 +114,27 @@ function generateUserscript(filters) {
 
 /**
  * Geenrates a uBlock Origin script for the selected filters.
+ * @param {string} platform Platform being terraformed
  * @param {array} filters Array of CSS selectors to filter out
  * @returns Script for uBlock Origin in the form of a string
  */
-function generateUblock(filters) {
-    let script = "! Twitter\n";
+function generateUblock(platform, filters) {
+    let script = "";
+    let addr = "";
+    switch(platform) {
+        case "twitter":
+            script += "! Twitter\n";
+            addr = "twitter.com,x.com";
+            break;
+        case "reddit":
+            script += "! Reddit\n";
+            addr = "reddit.com";
+            break;
+    }
+
     filters.forEach(arr => {
         arr && arr.forEach(selector => {
-            script += `twitter.com,x.com##${selector}\n`;
+            script += `${addr}##${selector}\n`;
         });
     });
     return script;

@@ -1,3 +1,5 @@
+import Feature from "../feature/Feature";
+
 /**
  * Form with toggles to add/remove different CSS selectors from the filters list.
  * @param {array} filters Array of currently selected CSS filters
@@ -51,59 +53,6 @@ export default function Twitter({ filters, setFilters }) {
                 <Feature title="Post analytics" description="Hides number of comments, likes, retweets, and views" filters={filters} setFilters={setFilters} id={20} selectors={['[aria-label*="View post analytics"]', '[aria-label*=". Reply"]', '[aria-label*=". Repost"]', '[aria-label*=". Like"]', '[aria-label="Share post"]', 'div > span > span > span:has-text(/Views/i):upward(span):upward(span):upward(div)']} />
                 <Feature title="Replies" description="Hides all replies to a tweet except those which are part of a thread by the original author" filters={filters} setFilters={setFilters} id={21} selectors={['[aria-label="Timeline: Conversation"] [data-testid="cellInnerDiv"] article[tabindex="0"]:not(:has(div[class^="css-175oi2r r-1bnu78o r-f8sm7e r-m5arl1"]))', '[aria-label="Timeline: Conversation"] [data-testid="cellInnerDiv"]:has(span:has-text(/Show probable spam/))']} />
             </section>
-        </>
-    );
-}
-
-/**
- * Feature to select for removal
- * @param {string} title Feature title
- * @param {string} description Feature description
- * @param {array} selectors Array of CSS selectors associated with each feature
- * @param {number} id Unique id for this feature, corresponds to its index in the filters array
- * @param {array} filters Current array of selected filters
- * @param {function} setFilters Function to update filters
- */
-function Feature({ title, description, selectors, id, filters, setFilters }) {
-    // Toggles this feature's selectors into/out of the filters array
-    function toggle (checked) {
-        if (checked) {
-            // Push the selectors into the filters
-            const newFilters = [...filters];
-            newFilters[id] = selectors;
-            setFilters(newFilters);
-
-        } else {
-            // Splice out the selectors from the current filters
-            const newFilters = [...filters];
-            newFilters[id] = [];
-            setFilters(newFilters);
-        }
-    }
-
-    return(
-        <div className="my-3">
-            <label className="w-full flex justify-between items-center">
-                <div className="me-2 select-none">
-                    <h4 className="text-xl leading-5 font-semibold">{title}</h4>
-                    <p className="mt-1 text-sm leading-4 text-neutral-600">{description}</p>
-                </div>
-
-                <Checkbox action={toggle} />
-            </label>
-        </div>
-    );
-}
-
-/**
- * Sliding checkbox input
- * @param {function} action Function to trigger when toggled
- */
-function Checkbox({ action }) {
-    return(
-        <>
-            <input type="checkbox" onChange={(e) => {action(e.target.checked)}} class="sr-only peer" />
-            <span class="relative w-11 h-6 shrink-0 bg-neutral-300 rounded-full hover:cursor-pointer peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-neutral-500 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-300 peer-checked:after:bg-blue-500"></span>
         </>
     );
 }

@@ -1,10 +1,11 @@
 /** React imports */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 /** Component imports */
 import Carousel from "../carousel/Carousel";
 import Setup from "../setup/Setup";
-import Twitter from "../twitter/Twitter";
+import Twitter from "../platforms/Twitter";
+import Reddit from "../platforms/Reddit";
 import Results from "../results/Results";
 
 /**
@@ -17,13 +18,27 @@ export default function Layout() {
     /** Store the user options for os, browser, and platform */
     const [os, setOs] = useState(null); // ios, android, macos, windows, linux
     const [browser, setBrowser] = useState(null); // safari, chrome, firefox, other
-    const [platform, setPlatform] = useState(null); // twitter
+    const [platform, setPlatform] = useState(null); // twitter, reddit
     const osOptions = ["ios", "android", "macos", "windows", "linux"];
     const browserOptions = ["safari", "chrome", "firefox", "other"];
-    const platformOptions = ["twitter"];
+    const platformOptions = ["twitter", "reddit"];
 
     /** Keep an array of CSS selectors for the filters */
     const [filters, setFilters] = useState([]);
+    useEffect(() => {
+        setFilters([]);
+    }, [platform]); // Reset the filters whenever the platform changes
+
+    function getPlatform () {
+        switch(platform) {
+            case "twitter":
+                return <Twitter filters={filters} setFilters={setFilters} />
+            case "reddit":
+                return <Reddit filters={filters} setFilters={setFilters} />
+            default:
+                return <h3 className="text-2xl leading-6 font-semibold text-center py-3">Please select a platform to terraform.</h3>
+        }
+    }
 
     return(
         <>
@@ -38,7 +53,7 @@ export default function Layout() {
                         <Setup value={browser} setValue={setBrowser} title="Select your browser" options={browserOptions} />
                         <Setup value={platform} setValue={setPlatform} title="Select a platform to terraform" options={platformOptions} />
 
-                        <Twitter filters={filters} setFilters={setFilters} />
+                        {getPlatform()}
 
                         <Results os={os} browser={browser} platform={platform} filters={filters} />
                     </Carousel>
