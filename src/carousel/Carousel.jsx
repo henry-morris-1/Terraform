@@ -45,11 +45,11 @@ function CarouselControls ({ currentSlide, setCurrentSlide, max }) {
 
     return (
         <div className="flex justify-between py-4 border-b border-current">
-            <button className="flex items-center px-3 py-1 rounded-3xl bg-blue-500 text-white disabled:opacity-0" disabled={currentSlide === 0} onClick={prevSlide}>
+            <button className="flex items-center px-3 py-1 rounded-3xl bg-violet-500 dark:bg-violet-500 text-white disabled:opacity-0" disabled={currentSlide === 0} onClick={prevSlide}>
                 &larr; back
             </button>
 
-            <button className="flex items-center px-3 py-1 rounded-3xl bg-blue-500 text-white disabled:opacity-0" disabled={currentSlide >= max} onClick={nextSlide}>
+            <button className="flex items-center px-3 py-1 rounded-3xl bg-violet-500 dark:bg-violet-500 text-white disabled:opacity-0" disabled={currentSlide >= max} onClick={nextSlide}>
                 next &rarr;
             </button>
         </div>

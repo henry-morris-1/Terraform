@@ -31,7 +31,7 @@ export default function Feature({ title, description, selectors, id, filters, se
             <label className="w-full flex justify-between items-center">
                 <div className="me-2 select-none">
                     <h4 className="text-xl leading-5 font-semibold">{title}</h4>
-                    <p className="mt-1 text-sm leading-4 text-neutral-600">{description}</p>
+                    <p className="mt-1 text-sm leading-4 text-neutral-600 dark:text-neutral-400">{description}</p>
                 </div>
 
                 <Checkbox action={toggle} />

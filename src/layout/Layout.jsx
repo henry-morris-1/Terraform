@@ -42,8 +42,8 @@ export default function Layout() {
 
     return(
         <>
-            <header className="w-full py-3 border-b border-black flex align-center justify-center">
-                <h1 className="text-5xl font-black">TERRAFORM</h1>
+            <header className="w-full py-3 border-b border-current flex align-center justify-center">
+                <h1 className="text-5xl font-bold">TERRAFORM</h1>
             </header>
 
             <main className="flex justify-center">

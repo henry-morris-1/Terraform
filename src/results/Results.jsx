@@ -33,7 +33,7 @@ export default function Results({ os, browser, platform, filters }) {
 
             {extension && script && <>
                 <div className="mt-3 flex justify-end">
-                    <button onClick={() => {copy(script)}} className="px-3 py-2 mb-1 bg-blue-500 text-white rounded-lg">Copy script to clipboard</button>
+                    <button onClick={() => {copy(script)}} className="px-3 py-2 mb-1 bg-violet-500 text-white rounded-lg">Copy script to clipboard</button>
                 </div>
                 <div className="bg-neutral-700 text-white font-mono whitespace-pre-wrap p-4 rounded-lg text-nowrap overflow-x-scroll">
                     {script}
