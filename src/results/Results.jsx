@@ -51,40 +51,41 @@ export default function Results({ os, browser, platform, filters }) {
  * @param {function} setExtension Function to set the extension type used
  */
 function Compatability({ os, browser, setExtension }) {
-    if (browser === "safari") {
-        // Use userscripts
-        setExtension("userscripts");
-        return(
-            <h3 className="text-2xl leading-6 font-semibold text-center py-3">To inject the javascript into Safari, please install the <a href="https://apps.apple.com/us/app/userscripts/id1463298887" className="underline">Userscripts</a> app and add the script below.</h3>
-        );
+    // Use a state variable for the message displayed
+    const [message, setMessage] = useState("");
 
-    } else if ((os && os !== "ios" && os !== "android") || (os === "android" && browser && browser !== "chrome")) {
-        // Use ublock origin
-        setExtension("ublock");
-        return(
-            <h3 className="text-2xl leading-6 font-semibold text-center py-3">To inject the javascript into your browser, please install the <a href="https://ublockorigin.com/" className="underline">uBlock Origin</a> extension and add the script below to the &quot;my filters&quot; section.</h3>
-        );
+    // Listen for changes in os and browser selection to set the extension and message
+    useEffect(() => {
+        if (browser === "safari") {
+            // Use userscripts
+            setExtension("userscripts");
+            setMessage(<span>To inject the javascript into Safari, please install the <a href="https://apps.apple.com/us/app/userscripts/id1463298887" className="underline">Userscripts</a> app and add the script below.</span>);
 
-    } else if (os === "android" && browser === "chrome") {
-        // Android chrome doesn't support extensions
-        setExtension(null);
-        return(
-            <h3 className="text-2xl leading-6 font-semibold text-center py-3">Javascript cannot be injected into Chrome for Android because it does not support extensions. Please consider a third-party Android browser, such as Firefox.</h3>
-        );
+        } else if ((os && os !== "ios" && os !== "android") || (os === "android" && browser && browser !== "chrome")) {
+            // Use ublock origin
+            setExtension("ublock");
+            setMessage(<span>To inject the javascript into your browser, please install the <a href="https://ublockorigin.com/" className="underline">uBlock Origin</a> extension and add the script below to the &quot;my filters&quot; section.</span>);
 
-    } else if (os && browser) {
-        // Non-safari browsers on ios don't work
-        setExtension(null);
-        return(
-            <h3 className="text-2xl leading-6 font-semibold text-center py-3">Javascript cannot be injected into third-party iOS browsers because, unlike Safari, they do not support extensions.</h3>
-        );
-    } else {
-        // Selections missing
-        setExtension(null);
-        return(
-            <h3 className="text-2xl leading-6 font-semibold text-center py-3">Please select your operating system and browser to complete the setup.</h3>
-        );
-    }
+        } else if (os === "android" && browser === "chrome") {
+            // Android chrome doesn't support extensions
+            setExtension(null);
+            setMessage("Javascript cannot be injected into Chrome for Android because it does not support extensions. Please consider a third-party Android browser, such as Firefox.");
+
+        } else if (os && browser) {
+            // Non-safari browsers on ios don't work
+            setExtension(null);
+            setMessage("Javascript cannot be injected into third-party iOS browsers because, unlike Safari, they do not support extensions.");
+        } else {
+            // Selections missing
+            setExtension(null);
+            setMessage("Please select your operating system and browser to complete the setup.");
+        }
+    }, [os, browser]);
+
+    // Return the formatted message
+    return(
+        <h3 className="text-2xl leading-6 font-semibold text-center py-3">{message}</h3>
+    )
 }
 
 /**
