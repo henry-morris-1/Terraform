@@ -43,7 +43,10 @@ export default function Layout() {
     return(
         <>
             <header className="w-full py-3 border-b border-current flex align-center justify-center">
-                <h1 className="text-5xl font-bold">TERRAFORM</h1>
+                <div className="flex flex-row items-center">
+                    <img src="assets/favicon.svg" className="h-16" />
+                    <h1 className="text-5xl font-semibold font-serif "> Terraform</h1>
+                </div>
             </header>
 
             <main className="flex justify-center">

@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      "serif": ["ivypresto-display", "ui-serif", "Georgia"],
+    }
   },
   plugins: [],
 }
