@@ -14,7 +14,7 @@ export default function Setup({ value, setValue, title, options }) {
             <h2 className="text-2xl leading-6 font-semibold text-center my-3">{title}</h2>
             <div className="w-full flex flex-wrap justify-around">
                 {options && options.map((option, i) => (
-                    <Selector name={option} icon={`./assets/${option}.png`} value={value} setValue={setValue} key={i} />
+                    <Selector name={option} icon={`./assets/${option}.svg`} value={value} setValue={setValue} key={i} />
                 ))}
             </div>
         </>
