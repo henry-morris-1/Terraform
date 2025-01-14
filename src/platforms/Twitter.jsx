@@ -52,6 +52,7 @@ export default function Twitter({ filters, setFilters }) {
                 <h3 className="text-2xl leading-6 font-semibold text-center">Post Details</h3>
                 <Feature title="Post analytics" description="Hides number of comments, likes, retweets, and views" filters={filters} setFilters={setFilters} id={20} selectors={['[aria-label*="View post analytics"]', '[aria-label*=". Reply"]', '[aria-label*=". Repost"]', '[aria-label*=". Like"]', '[aria-label="Share post"]', 'div > span > span > span:has-text(/Views/i):upward(span):upward(span):upward(div)']} />
                 <Feature title="Replies" description="Hides all replies to a tweet except those which are part of a thread by the original author" filters={filters} setFilters={setFilters} id={21} selectors={['[aria-label="Timeline: Conversation"] [data-testid="cellInnerDiv"] article[tabindex="0"]:not(:has(div[class^="css-175oi2r r-1bnu78o r-f8sm7e r-m5arl1"]))', '[aria-label="Timeline: Conversation"] [data-testid="cellInnerDiv"]:has(span:has-text(/Show probable spam/))']} />
+                <Feature title="Grok" description="Hides Grok post explanations" filters={filters} setFilters={setFilters} id={22} selectors={['[aria-label="Grok actions"]', '[data-testid^="followups_"]:upward(div)']} />
             </section>
         </>
     );
