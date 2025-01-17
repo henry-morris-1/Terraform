@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      "serif": ["ivypresto-display", "ui-serif", "Georgia"],
+      "serif": ["antiga", "ui-serif"],
     }
   },
   plugins: [],
