@@ -2,10 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    @font-face {
-        font-family: 'antiga';
-        font-weight: 400;
-        src: url("./assets/fonts/Antiga-Regular.otf") format("opentype");
-    }
+@font-face {
+    font-family: 'antiga';
+    font-weight: 400;
+    src: url("./assets/fonts/Antiga-Regular.otf") format("opentype");
 }
