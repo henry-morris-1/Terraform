@@ -10,6 +10,7 @@ import Results from "../results/Results";
 /** Data imports */
 import reddit from "../data/reddit.json";
 import twitter from "../data/twitter.json";
+import youtube from "../data/youtube.json";
 
 /**
  * Main layout of the site, contains the carousel and state.
@@ -24,7 +25,7 @@ export default function Layout() {
     const [platform, setPlatform] = useState(null); // twitter, reddit
     const osOptions = ["ios", "android", "macos", "windows", "linux"];
     const browserOptions = ["safari", "chrome", "firefox", "other"];
-    const platformOptions = ["twitter", "reddit"];
+    const platformOptions = ["twitter", "reddit", "youtube"];
 
     /** Keep an array of CSS selectors for the filters */
     const [filters, setFilters] = useState([]);
@@ -38,6 +39,8 @@ export default function Layout() {
                 return <Platform data={twitter} filters={filters} setFilters={setFilters} />
             case "reddit":
                 return <Platform data={reddit} filters={filters} setFilters={setFilters} />
+            case "youtube":
+                return <Platform data={youtube} filters={filters} setFilters={setFilters} />
             default:
                 return <h3 className="text-2xl leading-6 font-semibold text-center py-3">Please select a platform to terraform.</h3>
         }

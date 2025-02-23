@@ -101,7 +101,10 @@ function generateUserscript(platform, filters) {
             script += "// ==UserScript==\n// @name        Twitter\n// @description Removes excess twitter features\n// @match       *://*.twitter.com/*\n// @match       *://*.x.com/*\n// ==/UserScript==\n\nfunction addStyleString(str) {\n    let node = document.createElement('style');\n    node.innerHTML = str;\n    document.body.appendChild(node);\n}\n\n";
             break;
         case "reddit":
-            script += "// ==UserScript==\n// @name        Reddit\n// @description Removes excess reddit features\n// ==/UserScript==\n\nfunction addStyleString(str) {\n    let node = document.createElement('style');\n    node.innerHTML = str;\n    document.body.appendChild(node);\n}\n\n";
+            script += "// ==UserScript==\n// @name        Reddit\n// @description Removes excess reddit features\n// @match       *://*.reddit.com/*\n\n// ==/UserScript==\n\nfunction addStyleString(str) {\n    let node = document.createElement('style');\n    node.innerHTML = str;\n    document.body.appendChild(node);\n}\n\n";
+            break;
+        case "reddit":
+            script += "// ==UserScript==\n// @name        YouTube\n// @description Removes excess youtube features\n// @match       *://*.youtube.com/*\n// ==/UserScript==\n\nfunction addStyleString(str) {\n    let node = document.createElement('style');\n    node.innerHTML = str;\n    document.body.appendChild(node);\n}\n\n";
             break;
     }
 
@@ -130,6 +133,10 @@ function generateUblock(platform, filters) {
         case "reddit":
             script += "! Reddit\n";
             addr = "reddit.com";
+            break;
+        case "youtube":
+            script += "! YouTube\n";
+            addr = "youtube.com";
             break;
     }
 

@@ -1,0 +1,118 @@
+[
+    {
+        "name": "Subscription Feed",
+        "rules": [
+            {
+                "title": "Shorts",
+                "description": "Hide shorts from the subscriptions page",
+                "selectors": [
+                    ".ytd-rich-section-renderer.style-scope > .ytd-rich-shelf-renderer.style-scope",
+                    "#content > .ytd-rich-section-renderer.style-scope"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Sidebar and Masthead",
+        "rules": [
+            {
+                "title": "Notifications button",
+                "description": "Hide the notifications button in the masthead",
+                "selectors": [
+                    "ytd-notification-topbar-button-renderer"
+                ]
+            },
+            {
+                "title": "Create button",
+                "description": "Hide the create button in the masthead",
+                "selectors": [
+                    "[aria-label=\"Create\"]"
+                ]
+            },
+            {
+                "title": "Shorts",
+                "description": "Hide shorts in the sidebar",
+                "selectors": [
+                    "ytd-guide-entry-renderer:has-text(Shorts)",
+                    "ytd-mini-guide-entry-renderer:has-text(Shorts)"
+                ]
+            },
+            {
+                "title": "Subscriptions update dot",
+                "description": "Hides the dot used to show new updates in the subscriptions page",
+                "selectors": [
+                    "#newness-dot"
+                ]
+            },
+            {
+                "title": "Footer",
+                "description": "Remove the footer from the sidebar",
+                "selectors": [
+                    "#guide-renderer > #footer"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Videos",
+        "rules": [
+            {
+                "title": "Comments",
+                "description": "Hide comments under videos",
+                "selectors": [
+                    "#comments"
+                ]
+            },
+            {
+                "title": "Recommended videos",
+                "description": "Hide recommended videos",
+                "selectors": [
+                    "#secondary"
+                ]
+            },
+            {
+                "title": "Clarification box",
+                "description": "Remove the clarification box on videos with controversial topics",
+                "selectors": [
+                    "#clarify-box"
+                ]
+            },
+            {
+                "title": "Pause overlay",
+                "description": "Hide the overlay which appears when the video is paused",
+                "selectors": [
+                    ".ytp-scroll-min.ytp-pause-overlay",
+                    ".ytp-pause-overlay",
+                    ".ytp-pause-overlay-container"
+                ]
+            },
+            {
+                "title": "Payment button",
+                "description": "Hide the \"Thanks\" payment button",
+                "selectors": [
+                    "aria-label=\"Thanks\"]"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Channels",
+        "rules": [
+            {
+                "title": "Shorts",
+                "description": "Remove shorts from channel pages",
+                "selectors": [
+                    "[tab-title=\"Shorts\"]",
+                    "ytd-reel-shelf-renderer"
+                ]
+            },
+            {
+                "title": "Community tab",
+                "description": "Remove the comunity tab from channels",
+                "selectors": [
+                    "tab-title=\"Community\"]"
+                ]
+            }
+        ]
+    }
+]
