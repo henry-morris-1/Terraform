@@ -33,8 +33,8 @@
                 "title": "Shorts",
                 "description": "Hide shorts in the sidebar",
                 "selectors": [
-                    "ytd-guide-entry-renderer:has-text(Shorts)",
-                    "ytd-mini-guide-entry-renderer:has-text(Shorts)"
+                    "#items ytd-guide-entry-renderer:nth-of-type(2)",
+                    ".style-scope ytd-mini-guide-renderer ytd-mini-guide-entry-renderer:nth-of-type(2)"
                 ]
             },
             {
@@ -42,6 +42,20 @@
                 "description": "Hides the dot used to show new updates in the subscriptions page",
                 "selectors": [
                     "#newness-dot"
+                ]
+            },
+            {
+                "title": "Explore",
+                "description": "Hides the explore section of the sidebar",
+                "selectors": [
+                    "#sections > ytd-guide-section-renderer:nth-of-type(3)"
+                ]
+            },
+            {
+                "title": "More from YouTube",
+                "description": "Hides the more from youtube section of the sidebar",
+                "selectors": [
+                    "#sections > ytd-guide-section-renderer:nth-of-type(4)"
                 ]
             },
             {
@@ -90,7 +104,7 @@
                 "title": "Payment button",
                 "description": "Hide the \"Thanks\" payment button",
                 "selectors": [
-                    "aria-label=\"Thanks\"]"
+                    "[aria-label=\"Thanks\"]"
                 ]
             }
         ]

@@ -15,15 +15,9 @@ export default function Results({ os, browser, platform, filters }) {
 
     // Retrieve the script whenever the extension type or filters change
     useEffect(() => {
-        if (extension) {
-            if (extension === "userscripts") {
-                const newScript = generateUserscript(platform, filters);
-                setScript(newScript);
-
-            } else if (extension === "ublock") {
-                const newScript = generateUblock(platform, filters);
-                setScript(newScript);
-            }
+        if (extension && extension === "userscripts") {
+            const newScript = generateUserScript(platform, filters);
+            setScript(newScript);
         }
     }, [extension, filters]);
 
@@ -59,12 +53,12 @@ function Compatability({ os, browser, setExtension }) {
         if (browser === "safari") {
             // Use userscripts
             setExtension("userscripts");
-            setMessage(<span>To inject the javascript into Safari, please install the <a href="https://apps.apple.com/us/app/userscripts/id1463298887" className="underline">Userscripts</a> app and add the script below.</span>);
+            setMessage(<span>To inject the javascript into Safari, please install the <a target="_blank" href="https://apps.apple.com/us/app/userscripts/id1463298887" className="underline">Userscripts</a> app and add the script below.</span>);
 
         } else if ((os && os !== "ios" && os !== "android") || (os === "android" && browser && browser !== "chrome")) {
             // Use ublock origin
-            setExtension("ublock");
-            setMessage(<span>To inject the javascript into your browser, please install the <a href="https://ublockorigin.com/" className="underline">uBlock Origin</a> extension and add the script below to the &quot;my filters&quot; section.</span>);
+            setExtension("userscripts");
+            setMessage(<span>To inject the javascript into your browser, please install the <a target="_blank" href="https://www.tampermonkey.net/index.php" className="underline">Tampermonkey</a> extension and add the script below</span>);
 
         } else if (os === "android" && browser === "chrome") {
             // Android chrome doesn't support extensions
@@ -85,7 +79,7 @@ function Compatability({ os, browser, setExtension }) {
     // Return the formatted message
     return(
         <h3 className="text-2xl leading-6 font-semibold text-center py-3">{message}</h3>
-    )
+    );
 }
 
 /**
@@ -94,17 +88,15 @@ function Compatability({ os, browser, setExtension }) {
  * @param {array} filters Array of CSS selectors to filter out
  * @returns Script for Userscript in the form of a string
  */
-function generateUserscript(platform, filters) {
+function generateUserScript(platform, filters) {
     let script = "";
     switch(platform) {
         case "twitter":
-            script += "// ==UserScript==\n// @name        Twitter\n// @description Removes excess twitter features\n// @match       *://*.twitter.com/*\n// @match       *://*.x.com/*\n// ==/UserScript==\n\nfunction addStyleString(str) {\n    let node = document.createElement('style');\n    node.innerHTML = str;\n    document.body.appendChild(node);\n}\n\n";
+            script += getFormattedString(platform, ["twitter", "x"]);
             break;
         case "reddit":
-            script += "// ==UserScript==\n// @name        Reddit\n// @description Removes excess reddit features\n// @match       *://*.reddit.com/*\n\n// ==/UserScript==\n\nfunction addStyleString(str) {\n    let node = document.createElement('style');\n    node.innerHTML = str;\n    document.body.appendChild(node);\n}\n\n";
-            break;
-        case "reddit":
-            script += "// ==UserScript==\n// @name        YouTube\n// @description Removes excess youtube features\n// @match       *://*.youtube.com/*\n// ==/UserScript==\n\nfunction addStyleString(str) {\n    let node = document.createElement('style');\n    node.innerHTML = str;\n    document.body.appendChild(node);\n}\n\n";
+        case "youtube":
+            script += getFormattedString(platform, [platform]);
             break;
     }
 
@@ -116,36 +108,33 @@ function generateUserscript(platform, filters) {
     return script;
 }
 
-/**
- * Geenrates a uBlock Origin script for the selected filters.
- * @param {string} platform Platform being terraformed
- * @param {array} filters Array of CSS selectors to filter out
- * @returns Script for uBlock Origin in the form of a string
- */
-function generateUblock(platform, filters) {
-    let script = "";
-    let addr = "";
-    switch(platform) {
-        case "twitter":
-            script += "! Twitter\n";
-            addr = "twitter.com,x.com";
-            break;
-        case "reddit":
-            script += "! Reddit\n";
-            addr = "reddit.com";
-            break;
-        case "youtube":
-            script += "! YouTube\n";
-            addr = "youtube.com";
-            break;
-    }
+function getFormattedString(platform, matches) {
+    // Get the date in YYYY-MM-DD format
+    let date = new Date();
+    date = date.toISOString().split("T")[0];
 
-    filters.forEach(arr => {
-        arr && arr.forEach(selector => {
-            script += `${addr}##${selector}\n`;
-        });
+    return `// ==UserScript==
+// @name        ${platform} terraform
+// @namespace   https://terraform.henry-morris.com
+// @version     ${date}
+// @description Removes excess ${platform} features
+// @author      Henry Morris
+${matches.map(match => {
+    return `// @match       *://*.${match}.com/*`
+}).join("\n")}
+// ==/UserScript==
+
+if (window.trustedTypes && window.trustedTypes.createPolicy) {
+    window.trustedTypes.createPolicy('default', {
+        createHTML: (string, sink) => string
     });
-    return script;
+}
+
+function addStyleString(str) {
+    let node = document.createElement('style');
+    node.innerHTML = window.trustedTypes.defaultPolicy.createHTML(str);
+    document.body.appendChild(node);
+}\n\n`;
 }
 
 /**

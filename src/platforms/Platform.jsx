@@ -12,7 +12,7 @@ export default function Platform({ data, filters, setFilters }) {
     return (
         <>
             {data.map((section) => {
-                return <section key={section.name} className="mt-3 border-b border-black">
+                return <section key={section.name} className="mt-3 border-b border-white">
                     <h3 className="text-2xl leading-6 font-semibold text-center">{section.name}</h3>
 
                     {section.rules.map(feature => {

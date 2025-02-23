@@ -27,7 +27,7 @@
                     "[href=\"/i/monetization\"]",
                     "[href=\"/i/account_analytics\"]",
                     "[href=\"/i/verified-orgs-signup\"]",
-                    "[aria-label=\"Subscribe to Premium\"]"
+                    "[aria-label^=\"Subscribe to Premium\"]"
                 ]
             }
         ]
@@ -46,7 +46,8 @@
                 "title": "Explore",
                 "description": "Remove access to the explore page",
                 "selectors": [
-                    "[aria-label=\"Search and explore\"]"
+                    "[aria-label=\"Search and explore\"]",
+                    "[data-testid=\"sidebarColumn\"]"
                 ]
             },
             {
@@ -61,14 +62,6 @@
                 "description": "Removes profile recommendations in the left sidebar (desktop)",
                 "selectors": [
                     "[aria-label=\"Who to follow\"]"
-                ]
-            },
-            {
-                "title": "Videos",
-                "description": "Removes video carousels from the trending page",
-                "selectors": [
-                    "[aria-label=\"Timeline: Carousel\"]",
-                    "div > div > div > div > h2 > div > span:has-text(Videos for you):upward(div):upward(h2):upward(div):upward(div):upward(div):upward(div)"
                 ]
             },
             {
@@ -175,11 +168,12 @@
                     "[href=\"/compose/post\"]",
                     "[data-testid=\"tweetButtonInline\"]",
                     "[data-testid=\"tweetTextarea_0_label\"]",
-                    "[data-testid=\"toolBar\"]:upward(div)",
+                    "div > [data-testid=\"toolBar\"]",
                     "[aria-label=\"Everyone can reply\"]",
-                    "[data-testid=\"UserAvatar-Container-F345J6fklgj4\"]:upward(div)",
+                    "div > [data-testid=\"UserAvatar-Container-F345J6fklgj4\"]",
                     "[data-testid=\"postButton\"]",
-                    "[data-testid=\"SideNav_NewPost_Button\"]"
+                    "[data-testid=\"SideNav_NewPost_Button\"]",
+                    "[data-testid=\"inline_reply_offscreen\"]"
                 ]
             },
             {
@@ -203,15 +197,14 @@
                     "[aria-label*=\". Repost\"]",
                     "[aria-label*=\". Like\"]",
                     "[aria-label=\"Share post\"]",
-                    "div > span > span > span:has-text(/Views/i):upward(span):upward(span):upward(div)"
+                    "div > [aria-label=$\"View post analytics\"]"
                 ]
             },
             {
                 "title": "Replies",
                 "description": "Hides all replies to a tweet except those which are part of a thread by the original author",
                 "selectors": [
-                    "[aria-label=\"Timeline: Conversation\"] [data-testid=\"cellInnerDiv\"] article[tabindex=\"0\"]:not(:has(div[class^=\"css-175oi2r r-1bnu78o r-f8sm7e r-m5arl1\"]))",
-                    "[aria-label=\"Timeline: Conversation\"] [data-testid=\"cellInnerDiv\"]:has(span:has-text(/Show probable spam/))"
+                    "[aria-label=\"Timeline: Conversation\"] [data-testid=\"cellInnerDiv\"] article[tabindex=\"0\"]:not(:has(div[class^=\"css-175oi2r r-1bnu78o r-f8sm7e r-m5arl1\"]))"
                 ]
             },
             {
@@ -219,7 +212,7 @@
                 "description": "Hides Grok post explanations",
                 "selectors": [
                     "[aria-label=\"Grok actions\"]",
-                    "[data-testid^=\"followups_\"]:upward(div)"
+                    "div > [data-testid^=\"followups_\"]"
                 ]
             }
         ]
