@@ -1,0 +1,230 @@
+[
+    {
+        "name": "Authentication",
+        "rules": [
+            {
+                "title": "Login popups",
+                "description": "Removes login modal popups",
+                "selectors": [
+                    "auth-flow-modal"
+                ]
+            },
+            {
+                "title": "Login buttons",
+                "description": "Removes login buttons",
+                "selectors": [
+                    "[href=\"https://www.reddit.com/login/\"]"
+                ]
+            },
+            {
+                "title": "Get app button",
+                "description": "Removes button to get the reddit app",
+                "selectors": [
+                    "[id=\"get-app\"]"
+                ] 
+            }
+        ]
+    },
+    {
+        "name": "Sidebars",
+        "rules": [
+            {
+                "title": "Popular",
+                "description": "Removes the reddit popular page",
+                "selectors": [
+                    "[href=\"/r/popular/\"]"
+                ]
+            },
+            {
+                "title": "Answers",
+                "description": "Removes the reddit answers feature",
+                "selectors": [
+                    "[href=\"/answers/\"]"
+                ]
+            },
+            {
+                "title": "Recent subreddits",
+                "description": "Removes the recent subreddits section",
+                "selectors": [
+                    "reddit-recent-pages"
+                ]
+            },
+            {
+                "title": "Topics",
+                "description": "Removes the topics section",
+                "selectors": [
+                    "[aria-controls=\"TOPICS\"]:upward(1)"
+                ]
+            },
+            {
+                "title": "Resources",
+                "description": "Removes the resources section",
+                "selectors": [
+                    "[aria-label=\"Reddit resources\"]"
+                ]
+            },
+            {
+                "title": "Right sidebar",
+                "description": "Removes the right sidebar on subreddits and user profiles",
+                "selectors": [
+                    "#right-sidebar-container"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Subreddits",
+        "rules": [
+            {
+                "title": "Community highlights",
+                "description": "Removes the community highlights carousel",
+                "selectors": [
+                    "community-highlight-carousel"
+                ]
+            },
+            {
+                "title": "Join buttons",
+                "description": "Remove buttons to join a community",
+                "selectors": [
+                    "[data-post-click-location=\"join\"]"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Posts",
+        "rules": [
+            {
+                "title": "Create post",
+                "description": "Remove posting abilities",
+                "selectors": [
+                    "[data-testid=\"create-post\"]"
+                ]
+            },
+            {
+                "title": "Avatars",
+                "description": "Remove user avatars in posts",
+                "selectors": [
+                    ".avatar"
+                ]
+            },
+            {
+                "title": "Reddit gold",
+                "description": "Removes reddit gold",
+                "selectors": [
+                    "[aria-label=\"Give award\"]"
+                ]
+            },
+            {
+                "title": "Share",
+                "description": "Removes post sharing",
+                "selectors": [
+                    ".share-dropdown-menu"
+                ]
+            },
+            {
+                "title": "Upvote/Downvote",
+                "description": "Removes the upvote and downvote buttons, but keeps the score. Affects comments as well",
+                "selectors": [
+                    "[upvote]",
+                    "[downvote]"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Comment Section",
+        "rules": [
+            {
+                "title": "Avatars",
+                "description": "Remove user avatars in comments and user profiles",
+                "selectors": [
+                    "[data-testid=\"profile-icon\"]",
+                    "[slot=\"commentAvatar\"]"
+                ]
+            },
+            {
+                "title": "Community achievements",
+                "description": "Removes achievement flairs",
+                "selectors": [
+                    "community-achievements-flair"
+                ]
+            },
+            {
+                "title": "Related posts",
+                "description": "Removes related posts at the bottom of the comment section",
+                "selectors": [
+                    "[aria-label=\"Related Posts Section\"]"
+                ]
+            },
+            {
+                "title": "Reddit gold",
+                "description": "Removes reddit gold",
+                "selectors": [
+                    "[aria-label^=\"Give award\"]"
+                ]
+            },
+            {
+                "title": "Share",
+                "description": "Removes comment sharing",
+                "selectors": [
+                    "[slot=\"comment-share\"]"
+                ]
+            },
+            {
+                "title": "Reply",
+                "description": "Removes the reply button",
+                "selectors": [
+                    "[slot=\"comment-reply\"]"
+                ]
+            },
+            {
+                "title": "Upvote/Downvote",
+                "description": "Removes the upvote and downvote buttons, but keeps the score. Affects posts as well.",
+                "selectors": [
+                    "[upvote]",
+                    "[downvote]"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Search",
+        "rules": [
+            {
+                "title": "Search bar",
+                "description": "Remove all search functionality",
+                "selectors": [
+                    ".reddit-search-bar"
+                ]
+            },
+            {
+                "title": "Dropdown results",
+                "description": "Remove dropdown results when searching",
+                "selectors": [
+                    "[data-testid=\"search-dropdown-results-container\"]"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Popular and Home",
+        "rules": [
+            {
+                "title": "Subreddit highlights",
+                "description": "Removes the subreddit highlight carousel",
+                "selectors": [
+                    "shreddit-gallery-carousel"
+                ]
+            },
+            {
+                "title": "Subreddit icons",
+                "description": "Removes subreddit icons from posts",
+                "selectors": [
+                    ".shreddit-subreddit-icon__icon",
+                    "community-status"
+                ]
+            }
+        ]
+    }
+]

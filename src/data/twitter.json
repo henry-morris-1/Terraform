@@ -1,0 +1,227 @@
+[
+    {
+        "name": "Ads and Premium Features",
+        "rules": [
+            {
+                "title": "Promoted tweets",
+                "description": "Removes all tweets with the promoted tag",
+                "selectors": [
+                    "[data-testid=\"tweet\"]:has-text(Promoted)",
+                    "[data-testid=\"UserCell\"]:has-text(Promoted)"
+                ]
+            },
+            {
+                "title": "Premium features",
+                "description": "Removes all premium features (analytics, grok, monetization, etc.) and solicitations",
+                "selectors": [
+                    "[aria-label=\"Subscribe to Premium\"]",
+                    "[aria-label=\"Premium\"]",
+                    "[aria-label=\"Grok\"]",
+                    "[aria-label=\"Profile Summary\"]",
+                    "[aria-label=\"Verified Orgs\"]",
+                    "[aria-label=\"Business\"]",
+                    "[href=\"/settings/monetization\"]",
+                    "[href=\"/i/premium_sign_up\"]",
+                    "[href*=\"https://ads.x.com\"]",
+                    "[href*=\"https://ads.twitter.com\"]",
+                    "[href=\"/i/monetization\"]",
+                    "[href=\"/i/account_analytics\"]",
+                    "[href=\"/i/verified-orgs-signup\"]",
+                    "[aria-label=\"Subscribe to Premium\"]"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Explore and Trending",
+        "rules": [
+            {
+                "title": "Search bar",
+                "description": "Removes the search feature",
+                "selectors": [
+                    "[aria-label=\"Search\"]"
+                ]
+            },
+            {
+                "title": "Explore",
+                "description": "Remove access to the explore page",
+                "selectors": [
+                    "[aria-label=\"Search and explore\"]"
+                ]
+            },
+            {
+                "title": "What's happening",
+                "description": "Removes the trending section in the left sidebar (desktop)",
+                "selectors": [
+                    "[aria-label=\"Timeline: Trending now\"]"
+                ]
+            },
+            {
+                "title": "Who to follow",
+                "description": "Removes profile recommendations in the left sidebar (desktop)",
+                "selectors": [
+                    "[aria-label=\"Who to follow\"]"
+                ]
+            },
+            {
+                "title": "Videos",
+                "description": "Removes video carousels from the trending page",
+                "selectors": [
+                    "[aria-label=\"Timeline: Carousel\"]",
+                    "div > div > div > div > h2 > div > span:has-text(Videos for you):upward(div):upward(h2):upward(div):upward(div):upward(div):upward(div)"
+                ]
+            },
+            {
+                "title": "Events",
+                "description": "Removes events from the trending page",
+                "selectors": [
+                    "[href^=\"/i/events/\"]"
+                ]
+            },
+            {
+                "title": "Sports, news, and entertainment",
+                "description": "Removes all explore sections besides \"for you\" and \"trending\"",
+                "selectors": [
+                    "[aria-label=\"Timeline: Explore\"] > div > div > div > div > :not([data-testid=\"trend\"])"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "General Features",
+        "rules": [
+            {
+                "title": "Home timeline",
+                "description": "Removes the home timeline",
+                "selectors": [
+                    "[aria-label=\"Timeline: Your Home Timeline\"]",
+                    "[data-testid=\"emptyState\"]",
+                    "[aria-label^=\"New posts are available.\"]"
+                ]
+            },
+            {
+                "title": "Bookmarks",
+                "description": "Removes the ability to make and view bookmarks",
+                "selectors": [
+                    "[aria-label=\"Bookmark\"]",
+                    "[data-testid=\"bookmark\"]",
+                    "[href=\"/i/bookmarks\"]",
+                    "[aria-label=\"Bookmarks\"]"
+                ]
+            },
+            {
+                "title": "Communities",
+                "description": "Hides the communities page",
+                "selectors": [
+                    "[aria-label=\"Communities\"]"
+                ]
+            },
+            {
+                "title": "Jobs",
+                "description": "Hides the jobs page",
+                "selectors": [
+                    "[href=\"/jobs\"]"
+                ]
+            },
+            {
+                "title": "Messages",
+                "description": "Hides the messages page",
+                "selectors": [
+                    "[aria-label=\"Direct Messages\"]"
+                ]
+            },
+            {
+                "title": "Notifications",
+                "description": "Hides the notifications page",
+                "selectors": [
+                    "[aria-label=\"Notifications\"]"
+                ]
+            },
+            {
+                "title": "Spaces",
+                "description": "Removes spaces",
+                "selectors": [
+                    "[href=\"/i/spaces/start\"]"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Lists",
+        "rules": [
+            {
+                "title": "Lists",
+                "description": "Hide the lists page",
+                "selectors": [
+                    "[aria-label=\"Lists\"]"
+                ]
+            },
+            {
+                "title": "Recommended lists",
+                "description": "Hides recommended lists on the lists page",
+                "selectors": [
+                    "[aria-label=\"Timeline: Your Lists\"] > div > div:nth-child(n):nth-child(-n+8)"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "User Abilities",
+        "rules": [
+            {
+                "title": "Posting",
+                "description": "Removes the ability to create new posts",
+                "selectors": [
+                    "[href=\"/compose/post\"]",
+                    "[data-testid=\"tweetButtonInline\"]",
+                    "[data-testid=\"tweetTextarea_0_label\"]",
+                    "[data-testid=\"toolBar\"]:upward(div)",
+                    "[aria-label=\"Everyone can reply\"]",
+                    "[data-testid=\"UserAvatar-Container-F345J6fklgj4\"]:upward(div)",
+                    "[data-testid=\"postButton\"]",
+                    "[data-testid=\"SideNav_NewPost_Button\"]"
+                ]
+            },
+            {
+                "title": "Following",
+                "description": "Removes the ability to follow users",
+                "selectors": [
+                    "[aria-label^=\"Follow \"]"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Post Details",
+        "rules": [
+            {
+                "title": "Post analytics",
+                "description": "Hides number of comments, likes, retweets, and views",
+                "selectors": [
+                    "[aria-label*=\"View post analytics\"]",
+                    "[aria-label*=\". Reply\"]",
+                    "[aria-label*=\". Repost\"]",
+                    "[aria-label*=\". Like\"]",
+                    "[aria-label=\"Share post\"]",
+                    "div > span > span > span:has-text(/Views/i):upward(span):upward(span):upward(div)"
+                ]
+            },
+            {
+                "title": "Replies",
+                "description": "Hides all replies to a tweet except those which are part of a thread by the original author",
+                "selectors": [
+                    "[aria-label=\"Timeline: Conversation\"] [data-testid=\"cellInnerDiv\"] article[tabindex=\"0\"]:not(:has(div[class^=\"css-175oi2r r-1bnu78o r-f8sm7e r-m5arl1\"]))",
+                    "[aria-label=\"Timeline: Conversation\"] [data-testid=\"cellInnerDiv\"]:has(span:has-text(/Show probable spam/))"
+                ]
+            },
+            {
+                "title": "Grok",
+                "description": "Hides Grok post explanations",
+                "selectors": [
+                    "[aria-label=\"Grok actions\"]",
+                    "[data-testid^=\"followups_\"]:upward(div)"
+                ]
+            }
+        ]
+    }
+]

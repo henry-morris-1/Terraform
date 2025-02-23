@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 /** Component imports */
 import Carousel from "../carousel/Carousel";
 import Setup from "../setup/Setup";
-import Twitter from "../platforms/Twitter";
-import Reddit from "../platforms/Reddit";
+import Platform from "../platforms/Platform";
 import Results from "../results/Results";
+
+/** Data imports */
+import reddit from "../data/reddit.json";
+import twitter from "../data/twitter.json";
 
 /**
  * Main layout of the site, contains the carousel and state.
@@ -32,9 +35,9 @@ export default function Layout() {
     function getPlatform () {
         switch(platform) {
             case "twitter":
-                return <Twitter filters={filters} setFilters={setFilters} />
+                return <Platform data={twitter} filters={filters} setFilters={setFilters} />
             case "reddit":
-                return <Reddit filters={filters} setFilters={setFilters} />
+                return <Platform data={reddit} filters={filters} setFilters={setFilters} />
             default:
                 return <h3 className="text-2xl leading-6 font-semibold text-center py-3">Please select a platform to terraform.</h3>
         }
