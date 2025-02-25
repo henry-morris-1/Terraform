@@ -12,11 +12,10 @@
             },
             {
                 "title": "Premium features",
-                "description": "Removes all premium features (analytics, grok, monetization, etc.) and solicitations",
+                "description": "Removes all premium features (analytics, monetization, etc.) and solicitations",
                 "selectors": [
                     "[aria-label=\"Subscribe to Premium\"]",
                     "[aria-label=\"Premium\"]",
-                    "[aria-label=\"Grok\"]",
                     "[aria-label=\"Profile Summary\"]",
                     "[aria-label=\"Verified Orgs\"]",
                     "[aria-label=\"Business\"]",
@@ -90,6 +89,16 @@
                     "[aria-label=\"Timeline: Your Home Timeline\"]",
                     "[data-testid=\"emptyState\"]",
                     "[aria-label^=\"New posts are available.\"]"
+                ]
+            },
+            {
+                "title": "Grok",
+                "description": "Removes all grok features",
+                "selectors": [
+                    "[aria-label=\"Grok\"]",
+                    "[data-testid=\"GrokDrawerHeader\"]",
+                    "[aria-label=\"Grok actions\"]",
+                    "div > [data-testid^=\"followups_\"]"
                 ]
             },
             {
